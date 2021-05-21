@@ -250,7 +250,7 @@
       <!-- end We are -->
       <!-- contact -->
       <div id="booknow" class="contact">
-         <div class="container-fluid">
+         <div class="container-fluid" >
             <div class="row">
                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 padding-right1">
                   <div class="rable-box">
@@ -259,34 +259,41 @@
                   </div>
                </div>
                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 padding-left1">
-                  <div class="contact">
+                  <div class="contact" style="padding: 15px;">
                      <div class="titlepage">
                         <h2>Book <br><strong class="white "> Now</strong></h2>
                      </div>
-                     <form class="book_now">
+                      {% if message %}
+                          <p class="message">{{ message | safe}}</p>
+                      {% endif %}
+                     <form class="book_now" action="/submit" method="POST">
                         <div class="row">
-                           <div class="col-sm-12">
+                           <div class="col-sm-12 form-group">
                               <input class="contactus" placeholder="Name" type="text" name="Name">
                            </div>
-                           <div class="col-sm-12">
-                              <input class="contactus" placeholder="Phone Number" type="text" name="Phone Number">
+                           <div class="col-sm-12 form-group">
+                              <input class="contactus" placeholder="Phone Number" type="text" name="Phone_Number">
                            </div>
-                           <div class="col-sm-12">
+                           <div class="col-sm-12 form-group">
                               <input class="contactus" placeholder="Email" type="text" name="Email">
                            </div>
-                           <div class="col-sm-12">
-                              <select name="cars">
-                                 <option value="volvo" selected> Select Game</option>
-                                 <option value="saab">1</option>
-                                 <option value="fiat" >2</option>
-                                 <option value="audi">3</option>
-                              </select>
+                           <div class="col-sm-12 form-group">
+                              <h4>Please tell us what it is reference to:</h4>
+                                 <input type="radio" name="rating" value="Web_dev" selected>Web Development</input>
+                                 <input type="radio" name="rating" value="Web_app" >Web Applications</input>
+                                 <input type="radio" name="rating" value="Others">Others</input>
+
                            </div>
-                           <div class="col-sm-12">
-                              <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+                           <div class="col-sm-12 form-group">
+                              <textarea name="comments"
+                                          id=""
+                                          cols="85"
+                                          rows="10"
+                                          placeholder="Tell us what you liked and/or did not like"">
+                               </textarea>
                            </div>
-                           <div class="col-sm-12">
-                              <button class="send">Send</button>
+                           <div class="col-sm-12" style="padding-bottom: 10px">
+                              <input type="submit" class="btn"/>
                            </div>
                         </div>
                      </form>
@@ -300,7 +307,7 @@
       <!-- end clients -->
       <!-- map -->
       <div class="map">
-         <figure><img src="images/map.jpg" alt="#"/></figure>
+         <figure><img src="{{ url_for('static' , filename='images/map.jpg') }}" alt="#"/></figure>
       </div>
       <!-- end map -->
       <!--  footer -->
